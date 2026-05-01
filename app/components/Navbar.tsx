@@ -8,6 +8,15 @@ import { Menu, X } from "lucide-react";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/iSign.apk';
+    link.download = 'iSign.apk';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
    <nav
   className="fixed top-6 inset-x-0 mx-auto z-50 w-[95%] lg:w-[95%] max-w-5xl lg:max-w-none bg-white rounded-2xl"
@@ -40,16 +49,16 @@ export default function Navbar() {
             Contact Us
           </Link>
 
-          <a
-            href="#download"
+          <button
+            onClick={handleDownload}
             className="font-lexend text-sm px-4 py-2 rounded-xl border-[3px] border-[#343434]
                bg-[#FCFAC8] text-[#343434]
                transition-none
                hover:bg-[#343434] hover:text-[#FCFAC8]
-               hover:scale-110 active:scale-90"
+               hover:scale-110 active:scale-90 cursor-pointer"
           >
             Download Now
-          </a>
+          </button>
         </div>
 
         {/* Hamburger - mobile only */}
@@ -84,15 +93,17 @@ export default function Navbar() {
             Contact Us
           </Link>
 
-          <a
-            href="#download"
+          <button
+            onClick={() => {
+              handleDownload();
+              setMenuOpen(false);
+            }}
             className="font-lexend text-sm px-4 py-2 rounded-xl border-[3px] border-[#343434]
                bg-[#FCFAC8] text-[#343434]
-               hover:bg-[#343434] hover:text-[#FCFAC8]"
-            onClick={() => setMenuOpen(false)}
+               hover:bg-[#343434] hover:text-[#FCFAC8] cursor-pointer"
           >
             Download Now
-          </a>
+          </button>
         </div>
       )}
 

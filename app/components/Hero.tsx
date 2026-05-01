@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image";
 
 interface HeroProps {
@@ -6,6 +8,14 @@ interface HeroProps {
 }
 
 export default function Hero({ imageSrc, mobileImageSrc }: HeroProps) {
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/iSign.apk';
+    link.download = 'iSign.apk';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <section className="min-h-screen flex items-center justify-center pt-15">
       <div className="relative w-[95%] mx-auto">
@@ -47,15 +57,15 @@ export default function Hero({ imageSrc, mobileImageSrc }: HeroProps) {
             Sign Language in real time.
           </p>
 
-          <a
-            href="#download"
+          <button
+            onClick={handleDownload}
             className="font-lexend text-sm px-6 py-3 rounded-xl border-[3px] border-[#343434] w-fit
               bg-[#343434] text-[#FCFAC8]
               hover:bg-[#FCFAC8] hover:text-[#343434]
-              hover:scale-110 active:scale-90 transition-none"
+              hover:scale-110 active:scale-90 transition-none cursor-pointer"
           >
             Download Now
-          </a>
+          </button>
         </div>
 
         {/* Mobile text */}
@@ -75,15 +85,15 @@ export default function Hero({ imageSrc, mobileImageSrc }: HeroProps) {
             Sign Language in real time.
           </p>
 
-          <a
-            href="#download"
+          <button
+            onClick={handleDownload}
             className="font-lexend text-sm px-6 py-3 rounded-xl border-[3px] border-[#343434] w-fit
               bg-[#343434] text-[#FCFAC8]
               hover:bg-[#FCFAC8] hover:text-[#343434]
-              hover:scale-110 active:scale-90 transition-none"
+              hover:scale-110 active:scale-90 transition-none cursor-pointer"
           >
             Download Now
-          </a>
+          </button>
         </div>
 
       </div>
