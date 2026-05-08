@@ -10,7 +10,7 @@ interface HeroProps {
 export default function Hero({ imageSrc, mobileImageSrc }: HeroProps) {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = 'https://github.com/iSign-Capstone/iSign-Web/releases/download/iSign/iSign.apk';
+    link.href = 'https://github.com/jelsiejqn/iSign/releases/download/production/iSign.apk';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
